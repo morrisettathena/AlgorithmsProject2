@@ -5,7 +5,7 @@
 # 03/21/2023
 # Professor Cates
 #
-# Description: This program uses intersion sort to sort a given array
+# Description: This program uses intersion sort to sort arrays created from text files
 #
 ###############
 
@@ -32,7 +32,7 @@ def insertionSort(a):
     # start tracking the algorithm run time
     start = time.time_ns()
 
-    for i in range(2, len(a)):
+    for i in range(1, len(a)):
 
         key = a[i]
         j = i -1
@@ -66,9 +66,10 @@ def main():
         # appending each number to the list
         while num:
 
-            a.append(int(num))
-            num = f.readline()
+            a.append(int(num))      # adds current element stored under num
+            num = f.readline()      # reads next element in file
 
+        # closing each file after every element has been added
         f.close()
 
         # storing output of insertionSort in variable
@@ -77,11 +78,10 @@ def main():
         # inserts file results into results dictionary
         results[filename] = fileResults
 
-
         print("completed sort for %s" % filename)
-        # print(fileResults)
 
     print(results)
 
 main()
+
 
