@@ -28,8 +28,6 @@ FILES = [INORDER5K, INORDER10K, INORDER100K, RANDOM5K, RANDOM10K, RANDOM100K,
          REV5K, REV10K, REV100K]
 
 def insertionSort(a):
-    
-    # i, j, key = 0
 
     # start tracking the algorithm run time
     start = time.time_ns()
