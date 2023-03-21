@@ -126,7 +126,8 @@ class LinkedList:
 
         start = time.time_ns()
         while currentNode != None:  
-            #compars += 1 #one comparison
+            #compars += 3 #three comparison
+
             while currentNode.prev != None and currentNode.element < currentNode.prev.element:
                 currentNode.swapPrev()
                 currentNode = currentNode.prev
