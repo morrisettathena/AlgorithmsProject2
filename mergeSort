@@ -61,7 +61,7 @@ def mergeSort(arr,l,r):
 
 
 #Driver code
-arr = [2, 5, 31, 16, 23, 5]
+arr = [2, 5, 4, 16, 23, 31]
 n = len(arr) #length of the array
 print("The original array is: ")
 for(i) in range(n):
