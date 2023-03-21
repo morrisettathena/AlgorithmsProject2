@@ -1,0 +1,73 @@
+"""
+The following code allows the user to use mergesort to sort an array
+
+it also incorporates the merge aspect of the code
+"""
+
+
+def merge(arr, q,t,r):
+    p1 = t - q + 1
+    p2 = r - t
+
+    #temporary arrays
+    A1 = [0] * p1
+    A2 = [0] * p2
+
+    #Copy data to fill the arrays
+    for i in range(0,p1):
+        A1[i] = arr[q+1]
+
+    for j in range(0,p2):
+        A2[j] = arr[t + 1 + j]
+
+
+    #indexes of: 
+    i = 0   #first subarray
+    j = 0   #second subarray
+    k = 1   #merged array
+
+    #The actual merging process
+    while i<p1 and j<p2:
+        if(A1[i] < A2[j]):  #if the value at A1[i] is the smaller one, it gets added first
+            arr[k] = A1[i]
+            i+=1
+        else:               #Otherwise, A2[j] is added instead
+            arr[k] = A2[j]
+            j+=1
+        k+=1
+
+    #double checks if there is ANY term that still needs to be added in
+    while i < p1:
+        arr[k] = A1[i]
+        i += 1
+        k += 1
+
+    while i < p2:
+        arr[k] = A2[j]
+        j += 1
+        k += 1
+        
+
+def mergeSort(arr,l,r):
+   if l < r:
+
+       #halfwayPoint
+       m = l+(r-1)//2
+
+       #sorts the first halves
+       mergeSort(arr, l, m)
+       mergeSort(arr, m+1, r)
+       merge(arr, l, m, r)
+
+
+#Driver code
+arr = [2, 5, 31, 16, 23, 5]
+n = len(arr) #length of the array
+print("The original array is: ")
+for(i) in range(n):
+    print("%d" % arr[i], end=" ")
+
+mergeSort(arr, 0, n-1)
+print("\nSorted array list: ")
+for(i) in range(n):
+    print("%d" % arr[i], end=" ")
