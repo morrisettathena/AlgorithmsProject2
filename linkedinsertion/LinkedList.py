@@ -1,6 +1,4 @@
-import random
-import time
-import Node as n
+from .Node import Node as n
 
 class LinkedList:
 
@@ -10,7 +8,7 @@ class LinkedList:
         self.endNode = None
         self.length = 0
         if item != None:
-            self.startNode = n.Node.convertToNode(item)
+            self.startNode = n.convertToNode(item)
             self.endNode = self.startNode
             self.length = 1
 
@@ -72,7 +70,7 @@ class LinkedList:
         if index > self.length or index < 0:
             raise IndexError("index %d out of range for list of length %d" % (index, self.length))
         
-        targetNode = n.Node.convertToNode(item)
+        targetNode = n.convertToNode(item)
 
         if self.length == 0:
             self.startNode = targetNode
@@ -107,7 +105,7 @@ class LinkedList:
                 self.endNode.removeNext()
             else:
                 currentNode = self.getNode(index - 1)
-                targetNode: n.Node = currentNode.next
+                targetNode: n = currentNode.next
                 currentNode.setNext(targetNode.next)
 
         self.length -= 1
@@ -122,21 +120,28 @@ class LinkedList:
 
         currentNode = self.startNode
         compars = 0
-        swaps = 0
-
 
         while currentNode != None:  
             #compars += 3 #three comparison
+            if (currentNode.prev != None and currentNode.element < currentNode.prev.element):
+                tempNode = currentNode.prev
 
-            while currentNode.prev != None and currentNode.element < currentNode.prev.element:
-                currentNode.swapPrev()
-                currentNode = currentNode.prev
-
-                #compars += 2 #two comparisons
-                #swaps += 1 #one swap
+                #determine where to place the item in the list
+                while tempNode.prev != None and tempNode.prev.element > currentNode.element:
+                    #compars += 2 
+                    tempNode = tempNode.prev
                 
-            currentNode = currentNode.next
+                #at the current place in the list, break the connection, skipping over the current node
+                placehold = currentNode.next
+                currentNode.prev.setNext(currentNode.next)
 
+                #insert node at desired slot
+                currentNode.setPrev(tempNode.prev)
+                currentNode.setNext(tempNode)
+
+                currentNode = placehold
+            else:
+                currentNode = currentNode.next
 
         self.reassignHead()
 

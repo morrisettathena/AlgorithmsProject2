@@ -1,5 +1,5 @@
-import LinkedList as LL
-import time;
+import linkedinsertion.LinkedList as LL
+import time
 
 PATH = "./datafiles/"
 
@@ -18,9 +18,9 @@ FILES = [INORDER5K, INORDER10K, INORDER100K, RANDOM5K, RANDOM10K, RANDOM100K,
 
 FILES2 = [REV5K, REV10K, REV100K]
 
-FILES1 = [RANDOM5K]
+FILES1 = [RANDOM100K]
 
-FILES3 = ["test.txt"]
+TEST = ["test.txt"]
 
 def readIn(path: str):
     ls = LL.LinkedList()
@@ -43,9 +43,11 @@ def performSorts():
 
         start = time.time_ns()
         fileResults = ls.insertionSort()
+
         end = time.time_ns()
         results[filename] = fileResults
-        print("time to complete: %s" % start-end)
+        fileResults["time"] = (end-start)
+
         print("completed sort for %s" % filename)
         print(fileResults)
 

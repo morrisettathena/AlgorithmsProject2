@@ -82,6 +82,7 @@ def main():
 
     print(results)
 
-main()
+#main()
 
-
+a = [38, 1, 3, 9, 7]
+print(insertionSort(a))
