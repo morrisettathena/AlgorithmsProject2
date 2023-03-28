@@ -124,7 +124,7 @@ class LinkedList:
         compars = 0
         swaps = 0
 
-        start = time.time_ns()
+
         while currentNode != None:  
             #compars += 3 #three comparison
 
@@ -136,8 +136,8 @@ class LinkedList:
                 #swaps += 1 #one swap
                 
             currentNode = currentNode.next
-        end = time.time_ns()
+
 
         self.reassignHead()
 
-        return {"time elasped": end-start, "compars": compars, "swaps": swaps}
+        return {"compars": compars}

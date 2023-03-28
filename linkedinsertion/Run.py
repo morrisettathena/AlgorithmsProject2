@@ -1,4 +1,5 @@
 import LinkedList as LL
+import time;
 
 PATH = "./datafiles/"
 
@@ -40,8 +41,11 @@ def performSorts():
     for filename in FILES:
         ls = readIn(PATH + filename)
 
+        start = time.time_ns()
         fileResults = ls.insertionSort()
+        end = time.time_ns()
         results[filename] = fileResults
+        print("time to complete: %s" % start-end)
         print("completed sort for %s" % filename)
         print(fileResults)
 
