@@ -9,7 +9,6 @@
 #
 ###############
 
-import random
 import time
 
 PATH = "./datafiles/"
@@ -27,30 +26,26 @@ REV100K     = "rev100k.txt"
 FILES = [INORDER5K, INORDER10K, INORDER100K, RANDOM5K, RANDOM10K, RANDOM100K, 
          REV5K, REV10K, REV100K]
 
-def insertionSort(a):
+def insertionSort(a: list):
+    a.insert(0, None)
+    compars = 0
 
-    # start tracking the algorithm run time
-    start = time.time_ns()
-
-    for i in range(1, len(a)):
-
+    for i in range(2, len(a)):
+        
         key = a[i]
-        j = i -1
+        j = i - 1
 
         while j > 0 and a[j] > key:
+            #compars += 2
             a[j + 1] = a[j]
-            j-1
+            j-=1
 
         a[j + 1] = key
 
-    # stop tracking the algorithm run time
-    end = time.time_ns()
-
-    # finding the total algorithm run time
-    total = end - start
-
+    a.pop(0)
+    
     # print(a)
-    print('Time: ', total)
+    return {"compars": compars}
 
 def main():
 
@@ -72,17 +67,17 @@ def main():
         # closing each file after every element has been added
         f.close()
 
+        start = time.time_ns()
         # storing output of insertionSort in variable
         fileResults = insertionSort(a)
+        end = time.time_ns()
+
+        fileResults["time"] = end-start
 
         # inserts file results into results dictionary
         results[filename] = fileResults
 
         print("completed sort for %s" % filename)
+        print(fileResults)
 
     print(results)
-
-#main()
-
-a = [38, 1, 3, 9, 7]
-print(insertionSort(a))

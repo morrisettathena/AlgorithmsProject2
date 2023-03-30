@@ -35,7 +35,7 @@ def readIn(path: str):
     f.close()
     return ls
 
-def performSorts():
+def main():
     results = {}
 
     for filename in FILES:
@@ -52,5 +52,3 @@ def performSorts():
         print(fileResults)
 
     print(results)
-
-performSorts()

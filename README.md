@@ -1,1 +1,1 @@
-# AlgorithmsProject2
+Main file is in run.py, set flags depending on what items should be run

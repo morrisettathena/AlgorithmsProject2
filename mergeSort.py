@@ -20,10 +20,6 @@ FILES = [INORDER5K, INORDER10K, INORDER100K, RANDOM5K, RANDOM10K, RANDOM100K,
          REV5K, REV10K, REV100K]
 
 def merge(U, V, mainArr):
-    #compars = 1
-    if (len(U) + len(V) != len(mainArr) - 1):
-        raise Exception("something concatenated wrong")
-   
     #indexes of: 
     i = 0   #first subarray
     j = 0   #second subarray
@@ -96,7 +92,6 @@ def main():
         # closing each file after every element has been added
         f.close()
 
-
         # storing output of insertionSort in variable
         start = time.time_ns()
         compars = mergeSort(a)
@@ -111,6 +106,4 @@ def main():
         
 
     print(results)
-
-main()
 
